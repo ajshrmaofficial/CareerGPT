@@ -9,7 +9,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(false);
   const { isLoggedIn, setIsLoggedIn } = useContext(LoggedInContext);
   const navigate = useNavigate()
-  axios.defaults.baseURL = "http://localhost:3000/api";
+  axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL || "http://localhost:5000/api";
 
   const handlePromptChange = (e) => setPrompt(e.target.value);
 
