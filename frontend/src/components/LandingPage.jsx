@@ -11,11 +11,11 @@ const LandingPage = () => {
       <h1>CareerGPT</h1>
       <h2>AI Powered Career Guidance</h2>
       <h3>Powered by OpenAI's GPT-3</h3>
-      <h3 className="linkH3">
-        {!isLoggedIn && <Link className="link" to={"/register"}>
+      {!isLoggedIn &&<h3 className="linkH3">
+        <Link className="link" to={"/register"}>
           SignUp
-        </Link>}
-      </h3>
+        </Link>
+      </h3>}
     </div>
   );
 };
