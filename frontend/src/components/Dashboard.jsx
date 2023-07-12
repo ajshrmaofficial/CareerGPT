@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { LoggedInContext } from "../utility/LoggedInContext";
 import { useNavigate } from "react-router-dom";
+import server from "../utility/axiosDefault";
 
 function Dashboard() {
   const [prompt, setPrompt] = useState("");
@@ -9,14 +10,13 @@ function Dashboard() {
   const [loading, setLoading] = useState(false);
   const { isLoggedIn, setIsLoggedIn } = useContext(LoggedInContext);
   const navigate = useNavigate()
-  axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL || "http://localhost:5000/api";
 
   const handlePromptChange = (e) => setPrompt(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const res = await axios.post("/chat", { prompt });
+    const res = await server.post("/api/chat", { prompt });
     setResults(res.data);
     setLoading(false);
   };
